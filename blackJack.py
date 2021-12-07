@@ -16,6 +16,22 @@ playerHand = random.sample(deck, n)
 n = 1
 dealerHand = random.sample(deck, n)
 
+cardToCountMap = {
+    'A': None,
+    '2': 2,
+    '3': 3,
+    '4': 4,
+    '5': 5,
+    '6': 6,
+    '7': 7,
+    '8': 8,
+    '9': 9,
+    '10': 10,
+    'J': 10,
+    'Q': 10,
+    'K': 10
+}
+
 def rules():
     cmd = "clear"
     os.system(cmd)
@@ -94,70 +110,14 @@ def hit(add):
     global count
     if playerHand[0] == 'A':
         ace(total, newTotal)
-    elif playerHand[0] == '2':
-        count = 2
-        #playerHand.append(2)
-    elif playerHand[0] == '3':
-        count = 3
-        #playerHand.append(3)
-    elif playerHand[0] == '4':
-        count = 4
-        #playerHand.append(4)
-    elif playerHand[0] == '5':
-        count = 5
-        #playerHand.append(5)
-    elif playerHand[0] == '6':
-        count = 6
-        #playerHand.append(6)
-    elif playerHand[0] == '7':
-        count = 7
-        #playerHand.append(7)
-    elif playerHand[0] == '8':
-        count = 8
-        #playerHand.append(8)
-    elif playerHand[0] == '9':
-        count = 9
-        #playerHand.append(9)
-    elif playerHand[0] == '10':
-        count = 10
-        #playerHand.append(10)
-    elif playerHand[0] == 'J':
-        count = 10
-        #playerHand.append(10)
-    elif playerHand[0] == 'Q':
-        count = 10
-        #playerHand.append(10)
-    elif playerHand[0] == 'K':
-        count = 10
-        #playerHand.append(10)
-
+    else:
+        count = cardToCountMap[playerHand[0]]
+    
     global count2
     if playerHand[1] == 'A':
         ace(total, newTotal)
-    elif playerHand[1] == '2':
-        count2 = 2
-    elif playerHand[1] == '3':
-        count2 = 3
-    elif playerHand[1] == '4':
-        count2 = 4
-    elif playerHand[1] == '5':
-        count2 = 5
-    elif playerHand[1] == '6':
-        count2 = 6
-    elif playerHand[1] == '7':
-        count2 = 7
-    elif playerHand[1] == '8':
-        count2 = 8
-    elif playerHand[1] == '9':
-        count2 = 9
-    elif playerHand[1] == '10':
-        count2 = 10
-    elif playerHand[1] == 'J':
-        count2 = 10
-    elif playerHand[1] == 'Q':
-        count2 = 10
-    elif playerHand[1] == 'K':
-        count2 = 10
+    else:
+        count = cardToCountMap[playerHand[1]]
 
     total = count + count2
     temp2 == total
@@ -167,42 +127,9 @@ def hit(add):
     hit = random.sample(deck,n)
     if hit[0] == 'A':
         ace(total, newTotal)
-    elif hit[0] == '2':
-        count3 = 2
-        newTotal = total + count3
-    elif hit[0] == '3':
-        count3 = 3
-        newTotal = total + count3
-    elif hit[0] == '4':
-        count3 = 4
-        newTotal = total + count3
-    elif hit[0] == '5':
-        count3 = 5
-        newTotal = total + count3
-    elif hit[0] == '6':
-        count3 = 6
-        newTotal = total + count3
-    elif hit[0] == '7':
-        count3 = 7
-        newTotal = total + count3
-    elif hit[0] == '8':
-        count3 = 8
-        newTotal = total + count3
-    elif hit[0] == '9':
-        count3 = 9
-        newTotal = total + count3
-    elif hit[0] == '10':
-        count3 = 10
-        newTotal = total + count3
-    elif hit[0] == 'J':
-        count3 = 10
-        newTotal = total + count3
-    elif hit[0] == 'Q':
-        count3 = 10
-        newTotal = total + count3
-    elif hit[0] == 'K':
-        count3 = 10
-        newTotal = total + count3
+    else:
+        count3 = cardToCountMap[hit[0]]
+    newTotal = total + count3
 
     if newTotal == 21:
         print("\t" +str(hit)[1:-1] +"\tTotal:" +str(newTotal))
@@ -252,58 +179,14 @@ def dealer(hit, add):
     count = 0
     if dealerHand[0] == 'A':
         count = 11
-    elif dealerHand[0] == '2':
-        count = 2
-    elif dealerHand[0] == '3':
-        count = 3
-    elif dealerHand[0] == '4':
-        count = 4
-    elif dealerHand[0] == '5':
-        count = 5
-    elif dealerHand[0] == '6':
-        count = 6
-    elif dealerHand[0] == '7':
-        count = 7
-    elif dealerHand[0] == '8':
-        count = 8
-    elif dealerHand[0] == '9':
-        count = 9
-    elif dealerHand[0] == '10':
-        count = 10
-    elif dealerHand[0] == 'J':
-        count = 10
-    elif dealerHand[0] == 'Q':
-        count = 10
-    elif dealerHand[0] == 'K':
-        count = 10
+    else: 
+        count = cardToCountMap[dealerHand[0]]
 
     count2 = 0
     if dealerHand2[0] == 'A':
-        count2 == 11
-    elif dealerHand2[0] == '2':
-        count2 = 2
-    elif dealerHand2[0] == '3':
-        count2 = 3
-    elif dealerHand2[0] == '4':
-        count2 = 4
-    elif dealerHand2[0] == '5':
-        count2 = 5
-    elif dealerHand2[0] == '6':
-        count2 = 6
-    elif dealerHand2[0] == '7':
-        count2 = 7
-    elif dealerHand2[0] == '8':
-        count2 = 8
-    elif dealerHand2[0] == '9':
-        count2 = 9
-    elif dealerHand2[0] == '10':
-        count2 = 10
-    elif dealerHand2[0] == 'J':
-        count2 = 10
-    elif dealerHand2[0] == 'Q':
-        count2 = 10
-    elif dealerHand2[0] == 'K':
-        count2 = 10
+        count2 = 11
+    else:
+        count2 = cardToCountMap[dealerHand2[0]]
 
     total = count + count2
     if total == 21:
@@ -317,43 +200,9 @@ def dealer(hit, add):
         count3 = 0
         if hit[0] == 'A':
             count3 == 11
-            newTotal = total + count3
-        elif hit[0] == '2':
-            count3 = 2
-            newTotal = total + count3
-        elif hit[0] == '3':
-            count3 = 3
-            newTotal = total + count3
-        elif hit[0] == '4':
-            count3 = 4
-            newTotal = total + count3
-        elif hit[0] == '5':
-            count3 = 5
-            newTotal = total + count3
-        elif hit[0] == '6':
-            count3 = 6
-            newTotal = total + count3
-        elif hit[0] == '7':
-            count3 = 7
-            newTotal = total + count3
-        elif hit[0] == '8':
-            count3 = 8
-            newTotal = total + count3
-        elif hit[0] == '9':
-            count3 = 9
-            newTotal = total + count3
-        elif hit[0] == '10':
-            count3 = 10
-            newTotal = total + count3
-        elif hit[0] == 'J':
-            count3 = 10
-            newTotal = total + count3
-        elif hit[0] == 'Q':
-            count3 = 10
-            newTotal = total + count3
-        elif hit[0] == 'K':
-            count3 = 10
-            newTotal = total + count3
+        else:
+            count3 = cardToCountMap[hit[0]]
+        newTotal = total + count3
 
         print("\t\t\t\t" +str(hit)[1:-1] +"\tTotal:" +str(newTotal))
 
