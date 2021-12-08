@@ -96,7 +96,7 @@ def decision():
             break
         elif reply[0] == 's':
             print("\n\t\t      Dealers turn.")
-            dealer()
+            dealer(None, None) #TODO - seems like this functions doesnt need any parameters
             break
         else:
             print("\t\tSorry, didn't catch that.")
@@ -117,7 +117,7 @@ def hit(add):
     if playerHand[1] == 'A':
         ace(total, newTotal)
     else:
-        count = cardToCountMap[playerHand[1]]
+        count2 = cardToCountMap[playerHand[1]]
 
     total = count + count2
     temp2 == total
